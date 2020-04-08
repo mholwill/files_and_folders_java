@@ -1,5 +1,7 @@
 package com.codeclan.example.files_and_folders.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -7,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "folders")
-public class Folder implements Serializable {
+public class Folder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +22,7 @@ public class Folder implements Serializable {
     @OneToMany(mappedBy = "folder")
     private List<File> files;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;

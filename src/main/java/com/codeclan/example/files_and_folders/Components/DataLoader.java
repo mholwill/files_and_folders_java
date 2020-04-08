@@ -4,7 +4,7 @@ import com.codeclan.example.files_and_folders.models.File;
 import com.codeclan.example.files_and_folders.models.Folder;
 import com.codeclan.example.files_and_folders.models.User;
 import com.codeclan.example.files_and_folders.repositories.FileRepository;
-import com.codeclan.example.files_and_folders.repositories.FolderRespository;
+import com.codeclan.example.files_and_folders.repositories.FolderRepository;
 import com.codeclan.example.files_and_folders.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 public class DataLoader implements ApplicationRunner {
 
     @Autowired
-    FolderRespository folderRespository;
+    FolderRepository folderRepository;
 
     @Autowired
     UserRepository userRepository;
@@ -37,13 +37,13 @@ public class DataLoader implements ApplicationRunner {
         userRepository.save(user2);
 
         Folder folder1 = new Folder("Homework", user1);
-        folderRespository.save(folder1);
+        folderRepository.save(folder1);
 
         Folder folder2 = new Folder("Classwork", user2);
-        folderRespository.save(folder2);
+        folderRepository.save(folder2);
 
         Folder folder3 = new Folder("Classwork", user2);
-        folderRespository.save(folder3);
+        folderRepository.save(folder3);
 
         File file1 = new File("Project1", ".rb", 250, folder1);
         fileRepository.save(file1);

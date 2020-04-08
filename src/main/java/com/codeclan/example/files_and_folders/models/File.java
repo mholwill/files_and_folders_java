@@ -1,6 +1,9 @@
 package com.codeclan.example.files_and_folders.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "files")
@@ -20,6 +23,7 @@ public class File {
     @Column
     private int size;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "folder_id", nullable = false)
     private Folder folder;
